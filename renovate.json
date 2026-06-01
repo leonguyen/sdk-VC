@@ -111,6 +111,13 @@
       "description": "Don't pin GitHub Actions or Docker images to digests — version tags are sufficient",
       "matchManagers": ["github-actions"],
       "pinDigests": false
+    },
+    {
+      "description": "The GHCR Playwright image is our own mirror (.github/workflows/mirror-playwright.yml), not an upstream dependency. Its tag is driven by @playwright/test (tracked in the 'test tooling' group) and synced manually, so Renovate must not look it up: the private package returns 'no-result' and clutters the dependency dashboard.",
+      "matchManagers": ["github-actions"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/templatical/playwright"],
+      "enabled": false
     }
   ]
 }
